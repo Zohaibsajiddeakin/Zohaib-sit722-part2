@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: book-catalog
+  template:
+    metadata:
+      labels:
+        app: book-catalog
+    spec:
+      containers:
+      - name: book-catalog
+        image: afnand4/sixpointtwoimage:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://sixpointtwo_user:vjLAyG40iAHVi7sZW5RQhHPZJ2YEl8e7@dpg-crre4pjtq21c73duohrg-a.oregon-postgres.render.com/sixpointtwo"
